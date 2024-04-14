@@ -1,7 +1,6 @@
 import sys
 import os
 import logging
-import pickle
 from pathlib import Path
 
 from chromadb.utils import embedding_functions
@@ -9,6 +8,7 @@ from chromadb.utils import embedding_functions
 import neosophia.db.chroma as chroma
 
 from examples import project
+import fickling
 
 
 # === Config settings ===============================================
@@ -30,7 +30,7 @@ log = logging.getLogger('chroma_ex')
 # === Load data =====================================================
 log.info('Loading data.')
 with open(TEXT_DATA_FILE, 'rb') as f:
-    data = pickle.load(f)
+    data = fickling.load(f)
 log.info(f'Loaded {len(data)} sections of text.')
 
 texts = [example['text'] for example in data]

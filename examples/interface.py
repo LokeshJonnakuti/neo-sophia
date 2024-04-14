@@ -3,7 +3,6 @@ Web interface for semantic search and question answering!
 """
 
 import os
-import pickle
 from typing import Tuple
 
 import gradio as gr
@@ -12,6 +11,7 @@ from neosophia.llmtools import openaiapi as oaiapi
 
 from examples import project
 import examples.simplesearch as ss
+import fickling
 
 MAX_RULES = 5
 
@@ -23,7 +23,7 @@ def setup():
     oaiapi.set_api_key(api_key)
 
     with open(os.path.join(project.DATASETS_DIR_PATH, 'embeddings.pkl'), 'rb') as f:
-        records = pickle.load(f)
+        records = fickling.load(f)
 
     rules = [
         {

@@ -4,7 +4,6 @@ Very basic semantic search / question answering example.
 """
 
 import os
-import pickle
 import readline  # replaces `input` with an improved version
 
 from typing import Dict, List, Tuple
@@ -15,6 +14,7 @@ import numpy as np
 
 from examples import project
 from neosophia.llmtools import openaiapi as oaiapi
+import fickling
 
 MAX_RULES = 5
 QUIT_KEYWORDS = ['q', 'quit', 'x', 'exit']
@@ -45,7 +45,7 @@ def main() -> int:
     oaiapi.set_api_key(api_key)
 
     with open(os.path.join(project.DATASETS_DIR_PATH, 'embeddings.pkl'), 'rb') as f:
-        records = pickle.load(f)
+        records = fickling.load(f)
 
     rules = [
         {
