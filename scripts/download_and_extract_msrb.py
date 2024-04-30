@@ -242,7 +242,7 @@ def main(
     if not os.path.exists(file_in):
         print(f'Downloading MSRB to {project.DATASETS_DIR_PATH} ...')
         # os.system(f'wget -P {project.DATASETS_DIR_PATH} {url}')
-        req = requests.get(RULEBOOK_URL)
+        req = requests.get(RULEBOOK_URL, timeout=60)
         with open(os.path.join(project.DATASETS_DIR_PATH, RULEBOOK_FILENAME), 'wb') as f:
             f.write(req.content)
         print('Done')
