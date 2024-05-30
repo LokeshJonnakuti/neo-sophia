@@ -4,7 +4,6 @@ Basis of Presentation paragraphs from 10-Qs.
 """
 import os
 import json
-import random
 
 from typing import List, Tuple
 
@@ -14,6 +13,7 @@ import datasets as hfd
 
 from examples import project
 from neosophia.llmtools import openaiapi as oaiapi
+import secrets
 
 opj = os.path.join
 
@@ -73,7 +73,7 @@ def extract_basis_data(dataset: hfd.Dataset) -> List[Tuple[str, str]]:
 def main(template_file, prompt_file):
     """Main program."""
 
-    random.seed(0)
+    secrets.SystemRandom().seed(0)
 
     # configure stuff
     api_key = oaiapi.load_api_key(project.OPENAI_API_KEY_FILE_PATH).rstrip()
@@ -107,7 +107,7 @@ def main(template_file, prompt_file):
         with open(json_file, 'r') as f:
             basis_data = json.load(f)
 
-    random.shuffle(basis_data)
+    secrets.SystemRandom().shuffle(basis_data)
 
     idx = [10]
     def next_filing():

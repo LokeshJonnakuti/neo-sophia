@@ -6,7 +6,6 @@ from typing import Iterable, Optional, List, Tuple, Callable, Dict
 import sqlite3
 import time
 import re
-import random
 import os
 import datetime
 
@@ -26,6 +25,7 @@ from neosophia.llmtools import promptformat as pf
 from examples import project
 
 from examples import bank_agent as ba
+import secrets
 
 
 GPU_ENABLE = False
@@ -256,7 +256,7 @@ def main():
 
     def dummy(question: str, seed: int) -> Tuple[Optional[str], int]:
         """Dummy system for quickly testing things."""
-        time.sleep(random.random() * 0.1)
+        time.sleep(secrets.SystemRandom().random() * 0.1)
         return 'As an AI model, I\'m unable to answer the question.', 1
 
     systems = {
