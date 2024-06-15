@@ -2,11 +2,9 @@
 import os
 
 import click
-import requests
-
-from tqdm import tqdm
 
 import examples.project as project
+from security import safe_requests
 
 opj = os.path.join
 
@@ -31,7 +29,7 @@ def main(overwrite):
 
         if not os.path.exists(filepath) or overwrite:
             print(f'Downloading {url}')
-            req = requests.get(url)
+            req = safe_requests.get(url)
             with open(filepath, 'wb') as f:
                 f.write(req.content)
                 print(f'Saved {filename}')
