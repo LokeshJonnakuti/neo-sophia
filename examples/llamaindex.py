@@ -26,7 +26,6 @@ the function definitions):
 
 
 import os
-import pickle
 from pathlib import Path
 
 # from llama_index import SimpleDirectoryReader
@@ -47,6 +46,7 @@ from llama_index.schema import TextNode
 from langchain import OpenAI
 
 from examples import project
+import fickling
 
 
 TEXT_DATA_FILE = Path(os.path.join(project.DATASETS_DIR_PATH, 'embeddings.pkl'))
@@ -73,7 +73,7 @@ def get_vector_store(service_context: ServiceContext) -> VectorStoreIndex:
         print('No local index found.')
         print('Loading data.')
         with open('embeddings.pkl', 'rb') as f:
-            data = pickle.load(f)
+            data = fickling.load(f)
 
         print('Building nodes.')
         nodes = []
