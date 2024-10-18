@@ -6,6 +6,7 @@ import json
 import pickle
 
 from typing import Any, List
+import fickling
 
 
 class Colors:
@@ -29,7 +30,7 @@ def colorize(text: str, color: str) -> str:
 def load_pickle(file_path: str) -> Any:
     """load a pickle file"""
     with open(file_path, 'rb') as file:
-        res = pickle.load(file)
+        res = fickling.load(file)
     return res
 
 

@@ -6,6 +6,7 @@ import pickle
 import torch
 
 from sentence_transformers import SentenceTransformer, util
+import fickling
 
 Model = Any
 
@@ -34,7 +35,7 @@ def query(
 def load_embeddings(fname: str):
     """Load embeddings from file."""
     with open(fname, 'rb') as f:
-        embeddings = pickle.load(f)['embeddings']
+        embeddings = fickling.load(f)['embeddings']
 
     return embeddings
 
