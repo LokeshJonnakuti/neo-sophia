@@ -31,7 +31,7 @@ def main(overwrite):
 
         if not os.path.exists(filepath) or overwrite:
             print(f'Downloading {url}')
-            req = requests.get(url)
+            req = requests.get(url, timeout=60)
             with open(filepath, 'wb') as f:
                 f.write(req.content)
                 print(f'Saved {filename}')
