@@ -3,11 +3,11 @@ Tests for bank_agent_eval.py
 """
 
 from typing import Tuple, Optional, Callable
-import random
 import time
 
 from neosophia.llmtools import openaiapi as oai
 from examples import bank_agent_eval as bae
+import secrets
 
 
 def test_eval_systems():
@@ -18,7 +18,7 @@ def test_eval_systems():
         def mock(question: Optional[str], seed: int) -> Tuple[Optional[str], int]:
             """Dummy system for quickly testing things."""
             # time.sleep(random.random() * 3.0)
-            time.sleep(random.random() * 0.1)
+            time.sleep(secrets.SystemRandom().random() * 0.1)
             return answer, calls
         return mock
 
